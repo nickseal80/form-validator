@@ -1,7 +1,7 @@
 import { ValidateRule } from "./ValidateRule";
 
 export const maxLength: ValidateRule = {
-    name: 'maxLength',
+    rule: 'maxLength',
     validator: (value: string, minLength: number): boolean => {
         return value.length <= minLength;
     },

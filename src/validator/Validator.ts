@@ -1,14 +1,14 @@
 import FormError from "../errors/FormError";
 import { Config, getConfig, getDefaultConfig } from "../validatorConfig/config";
 import Form from "./Form";
-import eventDispatcher, { EventCallback, ValidationEvent } from "../event-dispatcher/EventDispatcher";
+import eventDispatcher, { EventCallback } from "../event-dispatcher/EventDispatcher";
 
 export interface Rule
 {
     rule: string,
     value?: number,
     message?: string,
-    validator?: () => boolean,
+    validator?: (value: string, ruleData: number) => boolean,
     options?: any[], //опции для отдельного поля
 }
 
@@ -20,7 +20,7 @@ export interface Error
 
 class Validator
 {
-    private form: Form;
+    private _form: Form;
     private config: Config
 
     constructor(selector: string, config?: Config) {
@@ -30,6 +30,10 @@ class Validator
         } else {
             this.config = getDefaultConfig();
         }
+    }
+
+    get form(): Form {
+        return this._form;
     }
 
     setForm = (selector: string) => {
@@ -43,10 +47,7 @@ class Validator
             throw new FormError(`Form \"${selector}\" is not instantiable of HTMLFormElement`);
         }
 
-        this.form = new Form(formEl);
-        eventDispatcher.on('formHasErrors', (evt) => {
-            //
-        })
+        this._form = new Form(formEl);
     }
 
     on = (eventName: string, event: EventCallback) => {
@@ -56,13 +57,13 @@ class Validator
     }
 
     addField = (selector: string, params: Rule[]): Validator => {
-        this.form.addField(selector, params);
+        this._form.addField(selector, params);
 
         return this;
     }
 
     getValidationErrors = () => {
-        return this.form.errors;
+        return this._form.errors;
     }
 }
 

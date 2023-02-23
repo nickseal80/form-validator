@@ -38,7 +38,10 @@ class Field
     validate = () => {
         this._errors = [];
         this._rules.forEach(rule => {
-            const validateRule = getRule(rule.rule);
+            let validateRule = getRule(rule.rule);
+            if (typeof validateRule === "undefined" && rule.validator && typeof rule.validator === "function") {
+                validateRule = rule;
+            }
             if (!validateRule.validator(this._$element.value, rule.value)) {
                 const error = {
                     rule: validateRule.name,

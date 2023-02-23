@@ -1,7 +1,7 @@
 import { ValidateRule } from "./ValidateRule";
 
 export const required: ValidateRule = {
-    name: 'required',
+    rule: 'required',
     validator: (value: string): boolean => {
         if (!value) {
             return false;

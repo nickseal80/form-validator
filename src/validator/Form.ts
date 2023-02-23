@@ -32,6 +32,10 @@ class Form {
         return this._errors;
     }
 
+    getFieldByName = (name: string) => {
+        return this._fields.find(field => field.element.getAttribute('name') === name);
+    }
+
     addListeners = () => {
         this._$submit.addEventListener('click', (evt) => {
             evt.preventDefault();
@@ -52,9 +56,9 @@ class Form {
                 eventDispatcher.trigger('formHasErrors', { errors: this._errors })
             }
 
-            if (this._errors.length === 0) {
-                this._$element.submit();
-            }
+            // if (this._errors.length === 0) {
+            //     this._$element.submit();
+            // }
         })
     }
 

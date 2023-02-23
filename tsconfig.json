@@ -10,7 +10,7 @@
     "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
     "outDir": "js",
     "strictPropertyInitialization": false,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
   },
   "lib": ["es2015"]
 }

@@ -3,6 +3,14 @@ import { Config } from "./validatorConfig/config";
 import { FieldValidationError } from "./validator/Form";
 
 const validator = {
+
+    /**
+     * Метод добавления формы
+     *
+     * @param selector - css селектор формы
+     * @param config - параметры конфигурации (опционально)
+     * @returns Объект приложения
+     */
     addForm: (selector: string, config?: Config): Validator => {
         return new Validator(selector, config);
     }
@@ -36,6 +44,16 @@ firstFormValidator
             rule: 'minLength',
             value: 5,
             message: "Не менее 5 символов",
+        },
+        {
+            rule: 'customMaxLength',
+            validator: (value) => {
+                //TODO: Нужно начинать делать пользовательское API
+
+                // const descriptionField = firstFormValidator.form.getFieldByName('description');
+                return false;
+            },
+            message: "Кастомный проверк не прошло валидаций!"
         }
     ])
     .on('formHasErrors', (evt) => {

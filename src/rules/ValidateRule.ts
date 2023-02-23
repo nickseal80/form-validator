@@ -3,7 +3,7 @@ import * as ruleObjs from "./index";
 
 export interface ValidateRule
 {
-    name: string;
+    rule: string;
     value?: string;
     validator: (arg0: string, [key]?: any) => boolean;
     defaultMessage: (value: string) => string;
