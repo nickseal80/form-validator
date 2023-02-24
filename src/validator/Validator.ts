@@ -8,7 +8,7 @@ export interface Rule
     rule: string,
     value?: number,
     message?: string,
-    validator?: (value: string, ruleData: number) => boolean,
+    validator?: () => boolean,
     options?: any[], //опции для отдельного поля
 }
 

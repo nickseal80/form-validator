@@ -2,6 +2,7 @@ import Field from "./Field";
 import { Rule, Error } from "./Validator";
 import FormError from "../errors/FormError";
 import eventDispatcher from "../event-dispatcher/EventDispatcher";
+import FieldError from "../errors/FieldError";
 
 export type FieldValidationError = {
     fieldName: string,
@@ -32,8 +33,14 @@ class Form {
         return this._errors;
     }
 
-    getFieldByName = (name: string) => {
-        return this._fields.find(field => field.element.getAttribute('name') === name);
+    getFieldByName = (name: string): Field => {
+        const field = this._fields.find(field => field.element.getAttribute('name') === name);
+
+        if (!field) {
+            throw new FieldError(`Field with name \"${name}\" is not found!`);
+        }
+
+        return field;
     }
 
     addListeners = () => {

@@ -1,11 +1,12 @@
 export const rules = [
-    'required',
-    'minLength',
-    'maxLength',
+    'required',//
+    'minLength',//
+    'maxLength',//
     'minValue',
     'maxValue',
-    'number',
-    'integer',
-    'float',
+    'numeric',//
+    'integer',//
+    'float',//
     'password',
+    'between',
 ]

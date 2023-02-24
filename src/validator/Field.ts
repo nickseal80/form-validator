@@ -44,7 +44,7 @@ class Field
             }
             if (!validateRule.validator(this._$element.value, rule.value)) {
                 const error = {
-                    rule: validateRule.name,
+                    rule: validateRule.rule,
                     message: rule.message ? rule.message : validateRule.defaultMessage(rule.value),
                 }
                 this._errors.push(error);
