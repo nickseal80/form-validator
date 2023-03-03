@@ -5,6 +5,7 @@ export interface Config
     showErrorsAlerts?: boolean,
     throwValidationErrors?: boolean,
     disableSubmitWhereHasErrors?: boolean,
+    validateByFormChange?: boolean,
 }
 
 export const config: Config = {
@@ -13,6 +14,7 @@ export const config: Config = {
     showErrorsUnderField: false,
     throwValidationErrors: true,
     disableSubmitWhereHasErrors: false,
+    validateByFormChange: false,
 }
 
 export const getConfig = (extConfig: Config): Config => {

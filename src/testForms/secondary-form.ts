@@ -21,5 +21,8 @@ secondaryFormValidator
     ])
     .on('formHasErrors', (evt) => {
         console.log(evt.data.errors);
-    });
+    })
+    .on('formChange', (evt) => {
+        console.log(evt.data);
+    })
 console.log(secondaryFormValidator);

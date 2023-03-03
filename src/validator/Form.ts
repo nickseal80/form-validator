@@ -3,6 +3,7 @@ import { Rule, Error } from "./Validator";
 import FormError from "../errors/FormError";
 import eventDispatcher from "../event-dispatcher/EventDispatcher";
 import FieldError from "../errors/FieldError";
+import EventDispatcher from "../event-dispatcher/EventDispatcher";
 
 export type FieldValidationError = {
     fieldName: string,
@@ -14,11 +15,13 @@ class Form {
     private _fields: Field[] = [];
     private _$submit: Element;
     private _errors: FieldValidationError[] = []; // TODO: add type
+    private _eventDispatcher: EventDispatcher;
 
-    constructor(element: HTMLFormElement) {
+    constructor(element: HTMLFormElement, eventDispatcher: EventDispatcher) {
         this.element = element;
         this.setSubmitElement();
         this.addListeners();
+        this._eventDispatcher = eventDispatcher;
     }
 
     get element(): HTMLFormElement {
@@ -60,7 +63,7 @@ class Form {
             });
 
             if (this._errors.length > 0) {
-                eventDispatcher.trigger('formHasErrors', { errors: this._errors })
+                this._eventDispatcher.trigger('formHasErrors', { errors: this._errors })
             }
 
             // if (this._errors.length === 0) {
@@ -87,7 +90,7 @@ class Form {
             throw new FormError(`Field \"${selector}\" is not found in this form!`);
         }
 
-        const field = new Field(fieldEl, params);
+        const field = new Field(fieldEl, params, this._eventDispatcher);
         this._fields.push(field);
     }
 }

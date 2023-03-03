@@ -1,7 +1,7 @@
 import FormError from "../errors/FormError";
 import { Config, getConfig, getDefaultConfig } from "../validatorConfig/config";
 import Form from "./Form";
-import eventDispatcher, { EventCallback } from "../event-dispatcher/EventDispatcher";
+import EventDispatcher, { EventCallback } from "../event-dispatcher/EventDispatcher";
 
 export interface Rule
 {
@@ -21,9 +21,11 @@ export interface Error
 class Validator
 {
     private _form: Form;
-    private config: Config
+    private config: Config;
+    private readonly _eventDispatcher: EventDispatcher;
 
     constructor(selector: string, config?: Config) {
+        this._eventDispatcher = new EventDispatcher();
         this.setForm(selector);
         if (config) {
             this.config = getConfig(config);
@@ -47,11 +49,15 @@ class Validator
             throw new FormError(`Form \"${selector}\" is not instantiable of HTMLFormElement`);
         }
 
-        this._form = new Form(formEl);
+        this._form = new Form(formEl, this._eventDispatcher);
+    }
+
+    get eventDispatcher(): EventDispatcher {
+        return this._eventDispatcher;
     }
 
     on = (eventName: string, event: EventCallback) => {
-        eventDispatcher.on(eventName, event);
+        this._eventDispatcher.on(eventName, event);
 
         return this;
     }

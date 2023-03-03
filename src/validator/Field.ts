@@ -1,16 +1,23 @@
 import { Error, Rule } from "./Validator";
 import { getRule } from "../rules/ValidateRule";
 import FieldError from "../errors/FieldError";
+import EventDispatcher from "../event-dispatcher/EventDispatcher";
 
 class Field
 {
     private _$element: HTMLInputElement;
     private _rules: Rule[];
     private _errors: Error[] = [];
+    private _eventDispatcher: EventDispatcher;
 
-    constructor(element: HTMLInputElement, params: Rule[]) {
+    constructor(element: HTMLInputElement, params: Rule[], eventDispatcher: EventDispatcher) {
         this.element = element;
         this._rules = params;
+        this._eventDispatcher = eventDispatcher;
+
+        this.element.addEventListener('input', () => {
+            this._eventDispatcher.trigger('formChange', { field: this, value: element.value });
+        });
     }
 
     get element(): HTMLInputElement {

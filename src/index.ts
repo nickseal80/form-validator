@@ -2,7 +2,6 @@ import Validator from './validator/Validator';
 import { Config } from "./validatorConfig/config";
 
 const validator = {
-
     /**
      * Метод добавления формы
      *
