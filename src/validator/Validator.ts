@@ -21,16 +21,16 @@ export interface Error
 class Validator
 {
     private _form: Form;
-    private config: Config;
+    private _config: Config;
     private readonly _eventDispatcher: EventDispatcher;
 
     constructor(selector: string, config?: Config) {
         this._eventDispatcher = new EventDispatcher();
         this.setForm(selector);
         if (config) {
-            this.config = getConfig(config);
+            this._config = getConfig(config);
         } else {
-            this.config = getDefaultConfig();
+            this._config = getDefaultConfig();
         }
     }
 

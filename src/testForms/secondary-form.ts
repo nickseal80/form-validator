@@ -1,6 +1,6 @@
 import validator from "../index";
 
-const secondaryFormValidator = validator.addForm('#secondary-form', { showErrorsUnderField: true });
+const secondaryFormValidator = validator.addForm('#secondary-form', { validateByFormChange: true });
 secondaryFormValidator
     .addField('#numeric', [
         {
@@ -22,7 +22,7 @@ secondaryFormValidator
     .on('formHasErrors', (evt) => {
         console.log(evt.data.errors);
     })
-    .on('formChange', (evt) => {
+    .on('formInputChange', (evt) => {
         console.log(evt.data);
     })
 console.log(secondaryFormValidator);

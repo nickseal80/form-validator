@@ -1,7 +1,6 @@
 import Field from "./Field";
 import { Rule, Error } from "./Validator";
 import FormError from "../errors/FormError";
-import eventDispatcher from "../event-dispatcher/EventDispatcher";
 import FieldError from "../errors/FieldError";
 import EventDispatcher from "../event-dispatcher/EventDispatcher";
 
@@ -15,7 +14,7 @@ class Form {
     private _fields: Field[] = [];
     private _$submit: Element;
     private _errors: FieldValidationError[] = []; // TODO: add type
-    private _eventDispatcher: EventDispatcher;
+    private readonly _eventDispatcher: EventDispatcher;
 
     constructor(element: HTMLFormElement, eventDispatcher: EventDispatcher) {
         this.element = element;
@@ -50,26 +49,30 @@ class Form {
         this._$submit.addEventListener('click', (evt) => {
             evt.preventDefault();
 
-            this._errors = [];
-            this._fields.forEach(field => {
-                const errors = field.validate();
-                if (errors.length > 0) {
-                    const fieldError: FieldValidationError = {
-                        fieldName: field.getName(),
-                        errors: field.getErrors(),
-                    }
-                    this._errors.push(fieldError);
-                }
-            });
-
-            if (this._errors.length > 0) {
-                this._eventDispatcher.trigger('formHasErrors', { errors: this._errors })
-            }
+            this.validate();
 
             // if (this._errors.length === 0) {
             //     this._$element.submit();
             // }
         })
+    }
+
+    validate = () => {
+        this._errors = [];
+        this._fields.forEach(field => {
+            const errors = field.validate();
+            if (errors.length > 0) {
+                const fieldError: FieldValidationError = {
+                    fieldName: field.getName(),
+                    errors: field.getErrors(),
+                }
+                this._errors.push(fieldError);
+            }
+        });
+
+        if (this._errors.length > 0) {
+            this._eventDispatcher.trigger('formHasErrors', { errors: this._errors })
+        }
     }
 
     setSubmitElement = () => {

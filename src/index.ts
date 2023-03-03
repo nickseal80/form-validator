@@ -1,7 +1,15 @@
 import Validator from './validator/Validator';
 import { Config } from "./validatorConfig/config";
+interface IValidator {
+    config?: Config,
+    validator: Validator | null,
+    addForm: (selector: string, config?: Config) => Validator,
+}
 
-const validator = {
+const validator: IValidator = {
+    config: undefined,
+    validator: null,
+
     /**
      * Метод добавления формы
      *
@@ -10,7 +18,9 @@ const validator = {
      * @returns Объект приложения
      */
     addForm: (selector: string, config?: Config): Validator => {
-        return new Validator(selector, config);
+        validator.config = config;
+        validator.validator = new Validator(selector, config);
+        return validator.validator;
     }
 }
 

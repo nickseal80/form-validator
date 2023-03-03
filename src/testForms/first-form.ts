@@ -1,7 +1,7 @@
 import validator from "../index";
 import { FieldValidationError } from "../validator/Form";
 
-const firstFormValidator = validator.addForm('#form', { showErrorsUnderField: true });
+const firstFormValidator = validator.addForm('#form', { validateByFormChange: true });
 firstFormValidator
     .addField('#name', [
         {
