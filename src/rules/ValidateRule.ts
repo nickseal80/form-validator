@@ -1,5 +1,6 @@
-import { rules } from "./rules";
 import * as ruleObjs from "./index";
+
+type RuleObj = { [key: string]: ValidateRule }
 
 export interface ValidateRule
 {
@@ -9,10 +10,12 @@ export interface ValidateRule
     defaultMessage: (value: string) => string;
 }
 
+export const addRule = (rule?: ValidateRule) => {
+    console.log(ruleObjs);
+}
+
 export const getRule = (ruleName: string) => {
-    //TODO: Выпилить массив "rules" по возможности
-    if (rules.find(rule => rule === ruleName)) {
-        // @ts-ignore
-        return ruleObjs[ruleName];
+    if (Object.keys(ruleObjs).find(rule => rule === ruleName)) {
+        return (ruleObjs as any)[ruleName];
     }
 }

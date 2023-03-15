@@ -21,7 +21,7 @@ export interface Error
 class Validator
 {
     private _form: Form;
-    private _config: Config;
+    private readonly _config: Config;
     private readonly _eventDispatcher: EventDispatcher;
 
     constructor(selector: string, config?: Config) {
@@ -50,6 +50,10 @@ class Validator
         }
 
         this._form = new Form(formEl, this._eventDispatcher);
+    }
+
+    get config(): Config {
+        return this._config;
     }
 
     get eventDispatcher(): EventDispatcher {

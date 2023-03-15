@@ -5,9 +5,9 @@ import EventDispatcher from "../event-dispatcher/EventDispatcher";
 import validator from "../index";
 import { Config } from "../validatorConfig/config";
 import { FieldValidationError } from "./Form";
+import fieldError from "../errors/FieldError";
 
-class Field
-{
+class Field {
     private _$element: HTMLInputElement;
     private _rules: Rule[];
     private _errors: Error[] = [];
@@ -23,18 +23,20 @@ class Field
     }
 
     initListeners = () => {
+        this._errors = [];
         this.element.addEventListener('input', () => {
             this._eventDispatcher.trigger('formInputChange', { field: this, value: this.element.value });
             if (this._config?.validateByFormChange) {
-                //TODO: проблема: ошибки не перерисовываются, если не срабатывает событие formHasErrors
                 this.validate();
-                if (this._errors.length > 0) {
-                    const fieldError: FieldValidationError = {
-                        fieldName: this.getName(),
-                        errors: this._errors,
-                    }
-                    this._eventDispatcher.trigger('formHasErrors', {errors: [fieldError]})
+                const fieldValError: FieldValidationError = {
+                    fieldName: this.getName(),
+                    errors: this._errors,
                 }
+                if (this._errors.length > 0) {
+                    this._eventDispatcher.trigger('formHasErrors', { errors: [fieldValError] })
+                }
+
+                this._eventDispatcher.trigger('validate', { field: this, errors: [fieldValError] });
             }
         });
     }
@@ -47,7 +49,7 @@ class Field
         this._$element = element;
     }
 
-    getName = () => {
+    getName = (): string => {
         const name = this._$element.getAttribute('name');
 
         if (typeof name === undefined || !name) {
@@ -57,11 +59,11 @@ class Field
         return name;
     }
 
-    getErrors = () => {
+    getErrors = (): Error[] => {
         return this._errors;
     }
 
-    validate = () => {
+    validate = (): Error[] => {
         this._errors = [];
         this._rules.forEach(rule => {
             let validateRule = getRule(rule.rule);

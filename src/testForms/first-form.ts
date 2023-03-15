@@ -37,7 +37,7 @@ firstFormValidator
             message: "Описание не должно превышать 10 символов",
         }
     ])
-    .on('formHasErrors', (evt) => {
+    .on('validate', (evt) => {
         //TODO: Убрать эту жесть после тестов!!!
         const errors = evt.data.errors;
         const errorsContainers = document.querySelectorAll('.has-errors');

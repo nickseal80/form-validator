@@ -18,8 +18,8 @@ const validator: IValidator = {
      * @returns Объект приложения
      */
     addForm: (selector: string, config?: Config): Validator => {
-        validator.config = config;
         validator.validator = new Validator(selector, config);
+        validator.config = validator.validator.config;
         return validator.validator;
     }
 }
