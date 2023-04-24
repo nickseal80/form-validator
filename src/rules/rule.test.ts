@@ -1,6 +1,5 @@
 import {  assert } from 'chai';
-const mocha = require('mocha');
-import { getRule, addRule } from "./ValidateRule";
+import { getRule, addRule, ValidateRule } from "./ValidateRule";
 
 describe('test rules', () => {
     it('should be a rule', function () {
@@ -9,6 +8,13 @@ describe('test rules', () => {
     });
 
     it('add a rule', () => {
-        addRule();
+        const testRule: ValidateRule = {
+            rule: 'testRule',
+            validator: () => {
+                return true;
+            },
+            message: "testRule",
+        }
+        addRule(testRule);
     })
 })

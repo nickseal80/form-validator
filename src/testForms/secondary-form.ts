@@ -1,11 +1,27 @@
 import validator from "../index";
+import { ValidateRule } from "../rules/ValidateRule";
 
-const secondaryFormValidator = validator.addForm('#secondary-form', { validateByFormChange: true });
+const testRule: ValidateRule = {
+    rule: 'testRule',
+    validator: (value): boolean => {
+        return value.length >= 4;
+    },
+    message: "testRule",
+}
+
+const secondaryFormValidator = validator
+    .addForm('#secondary-form', { validateByFormChange: true })
+    .addRule(testRule);
+
 secondaryFormValidator
     .addField('#numeric', [
         {
             rule: 'numeric',
             message: 'Поле должно иметь цифровое значение',
+        },
+        {
+            rule: 'testRule',
+            message: 'joojjoo',
         }
     ])
     .addField('#integer', [

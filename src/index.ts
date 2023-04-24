@@ -26,5 +26,5 @@ const validator: IValidator = {
 
 export default validator;
 
-import "./testForms/first-form";
+// import "./testForms/first-form";
 import "./testForms/secondary-form";

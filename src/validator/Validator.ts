@@ -2,6 +2,7 @@ import FormError from "../errors/FormError";
 import { Config, getConfig, getDefaultConfig } from "../validatorConfig/config";
 import Form from "./Form";
 import EventDispatcher, { EventCallback } from "../event-dispatcher/EventDispatcher";
+import { addRule, ValidateRule } from "../rules/ValidateRule";
 
 export interface Rule
 {
@@ -68,6 +69,12 @@ class Validator
 
     addField = (selector: string, params: Rule[]): Validator => {
         this._form.addField(selector, params);
+
+        return this;
+    }
+
+    addRule = (rule: ValidateRule) => {
+        addRule(rule);
 
         return this;
     }
