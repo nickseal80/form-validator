@@ -1,4 +1,4 @@
-import { ValidateRule } from "./ValidateRule";
+import { ValidateRule } from "../ValidateRule";
 
 export const minLength: ValidateRule = {
     rule: 'minLength',

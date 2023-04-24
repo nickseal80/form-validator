@@ -1,4 +1,4 @@
-import { ValidateRule } from "./ValidateRule";
+import { ValidateRule } from "../ValidateRule";
 
 export const float: ValidateRule = {
     rule: 'float',

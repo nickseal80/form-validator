@@ -1,4 +1,4 @@
-import { ValidateRule } from "./ValidateRule";
+import { ValidateRule } from "../ValidateRule";
 
 export const required: ValidateRule = {
     rule: 'required',
@@ -7,11 +7,7 @@ export const required: ValidateRule = {
             return false;
         }
 
-        if (value.length === 0) {
-            return false;
-        }
-
-        return true;
+        return value.length !== 0;
     },
     defaultMessage: () => "It's a required field",
 }

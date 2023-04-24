@@ -80,73 +80,73 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 
 /***/ }),
 
-/***/ "./src/rules/float.ts":
-/*!****************************!*\
-  !*** ./src/rules/float.ts ***!
-  \****************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.float = void 0;\nexports.float = {\n    rule: 'float',\n    validator: (value) => {\n        return /^(-?|[0-9]*[.,][0-9]+)$/.test(value);\n    },\n    defaultMessage: () => `Field is float`,\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/float.ts?");
-
-/***/ }),
-
 /***/ "./src/rules/index.ts":
 /*!****************************!*\
   !*** ./src/rules/index.ts ***!
   \****************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.float = exports.integer = exports.numeric = exports.minLength = exports.maxLength = exports.required = void 0;\nvar required_1 = __webpack_require__(/*! ./required */ \"./src/rules/required.ts\");\nObject.defineProperty(exports, \"required\", ({ enumerable: true, get: function () { return required_1.required; } }));\nvar maxLength_1 = __webpack_require__(/*! ./maxLength */ \"./src/rules/maxLength.ts\");\nObject.defineProperty(exports, \"maxLength\", ({ enumerable: true, get: function () { return maxLength_1.maxLength; } }));\nvar minLength_1 = __webpack_require__(/*! ./minLength */ \"./src/rules/minLength.ts\");\nObject.defineProperty(exports, \"minLength\", ({ enumerable: true, get: function () { return minLength_1.minLength; } }));\nvar numeric_1 = __webpack_require__(/*! ./numeric */ \"./src/rules/numeric.ts\");\nObject.defineProperty(exports, \"numeric\", ({ enumerable: true, get: function () { return numeric_1.numeric; } }));\nvar integer_1 = __webpack_require__(/*! ./integer */ \"./src/rules/integer.ts\");\nObject.defineProperty(exports, \"integer\", ({ enumerable: true, get: function () { return integer_1.integer; } }));\nvar float_1 = __webpack_require__(/*! ./float */ \"./src/rules/float.ts\");\nObject.defineProperty(exports, \"float\", ({ enumerable: true, get: function () { return float_1.float; } }));\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.float = exports.integer = exports.numeric = exports.minLength = exports.maxLength = exports.required = void 0;\nvar required_1 = __webpack_require__(/*! ./kit/required */ \"./src/rules/kit/required.ts\");\nObject.defineProperty(exports, \"required\", ({ enumerable: true, get: function () { return required_1.required; } }));\nvar maxLength_1 = __webpack_require__(/*! ./kit/maxLength */ \"./src/rules/kit/maxLength.ts\");\nObject.defineProperty(exports, \"maxLength\", ({ enumerable: true, get: function () { return maxLength_1.maxLength; } }));\nvar minLength_1 = __webpack_require__(/*! ./kit/minLength */ \"./src/rules/kit/minLength.ts\");\nObject.defineProperty(exports, \"minLength\", ({ enumerable: true, get: function () { return minLength_1.minLength; } }));\nvar numeric_1 = __webpack_require__(/*! ./kit/numeric */ \"./src/rules/kit/numeric.ts\");\nObject.defineProperty(exports, \"numeric\", ({ enumerable: true, get: function () { return numeric_1.numeric; } }));\nvar integer_1 = __webpack_require__(/*! ./kit/integer */ \"./src/rules/kit/integer.ts\");\nObject.defineProperty(exports, \"integer\", ({ enumerable: true, get: function () { return integer_1.integer; } }));\nvar float_1 = __webpack_require__(/*! ./kit/float */ \"./src/rules/kit/float.ts\");\nObject.defineProperty(exports, \"float\", ({ enumerable: true, get: function () { return float_1.float; } }));\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/index.ts?");
 
 /***/ }),
 
-/***/ "./src/rules/integer.ts":
-/*!******************************!*\
-  !*** ./src/rules/integer.ts ***!
-  \******************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.integer = void 0;\nexports.integer = {\n    rule: 'integer',\n    validator: (value) => {\n        return /^(-?|\\d+)$/.test(value);\n    },\n    defaultMessage: () => `Field is integer`,\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/integer.ts?");
-
-/***/ }),
-
-/***/ "./src/rules/maxLength.ts":
+/***/ "./src/rules/kit/float.ts":
 /*!********************************!*\
-  !*** ./src/rules/maxLength.ts ***!
+  !*** ./src/rules/kit/float.ts ***!
   \********************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.maxLength = void 0;\nexports.maxLength = {\n    rule: 'maxLength',\n    validator: (value, minLength) => {\n        return value.length <= minLength;\n    },\n    defaultMessage: (maxLength) => `field must be no more than ${maxLength} characters`,\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/maxLength.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.float = void 0;\nexports.float = {\n    rule: 'float',\n    validator: (value) => {\n        return /^(-?|[0-9]*[.,][0-9]+)$/.test(value);\n    },\n    defaultMessage: () => `Field is float`,\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/kit/float.ts?");
 
 /***/ }),
 
-/***/ "./src/rules/minLength.ts":
-/*!********************************!*\
-  !*** ./src/rules/minLength.ts ***!
-  \********************************/
+/***/ "./src/rules/kit/integer.ts":
+/*!**********************************!*\
+  !*** ./src/rules/kit/integer.ts ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.minLength = void 0;\nexports.minLength = {\n    rule: 'minLength',\n    validator: (value, minLength) => {\n        return value.length >= minLength;\n    },\n    defaultMessage: (minLength) => `Field must be at least ${minLength} characters long`,\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/minLength.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.integer = void 0;\nexports.integer = {\n    rule: 'integer',\n    validator: (value) => {\n        return /^(-?|\\d+)$/.test(value);\n    },\n    defaultMessage: () => `Field is integer`,\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/kit/integer.ts?");
 
 /***/ }),
 
-/***/ "./src/rules/numeric.ts":
-/*!******************************!*\
-  !*** ./src/rules/numeric.ts ***!
-  \******************************/
+/***/ "./src/rules/kit/maxLength.ts":
+/*!************************************!*\
+  !*** ./src/rules/kit/maxLength.ts ***!
+  \************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.numeric = void 0;\nexports.numeric = {\n    rule: 'numeric',\n    validator: (value) => {\n        return /^(-?|[.,0-9]+)$/.test(value);\n    },\n    defaultMessage: () => `Field is numeric`,\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/numeric.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.maxLength = void 0;\nexports.maxLength = {\n    rule: 'maxLength',\n    validator: (value, minLength) => {\n        return value.length <= minLength;\n    },\n    defaultMessage: (maxLength) => `field must be no more than ${maxLength} characters`,\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/kit/maxLength.ts?");
 
 /***/ }),
 
-/***/ "./src/rules/required.ts":
-/*!*******************************!*\
-  !*** ./src/rules/required.ts ***!
-  \*******************************/
+/***/ "./src/rules/kit/minLength.ts":
+/*!************************************!*\
+  !*** ./src/rules/kit/minLength.ts ***!
+  \************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.required = void 0;\nexports.required = {\n    rule: 'required',\n    validator: (value) => {\n        if (!value) {\n            return false;\n        }\n        if (value.length === 0) {\n            return false;\n        }\n        return true;\n    },\n    defaultMessage: () => \"It's a required field\",\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/required.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.minLength = void 0;\nexports.minLength = {\n    rule: 'minLength',\n    validator: (value, minLength) => {\n        return value.length >= minLength;\n    },\n    defaultMessage: (minLength) => `Field must be at least ${minLength} characters long`,\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/kit/minLength.ts?");
+
+/***/ }),
+
+/***/ "./src/rules/kit/numeric.ts":
+/*!**********************************!*\
+  !*** ./src/rules/kit/numeric.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.numeric = void 0;\nexports.numeric = {\n    rule: 'numeric',\n    validator: (value) => {\n        return /^(-?|[.,0-9]+)$/.test(value);\n    },\n    defaultMessage: () => `Field is numeric`,\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/kit/numeric.ts?");
+
+/***/ }),
+
+/***/ "./src/rules/kit/required.ts":
+/*!***********************************!*\
+  !*** ./src/rules/kit/required.ts ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.required = void 0;\nexports.required = {\n    rule: 'required',\n    validator: (value) => {\n        if (!value) {\n            return false;\n        }\n        return value.length !== 0;\n    },\n    defaultMessage: () => \"It's a required field\",\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/kit/required.ts?");
 
 /***/ }),
 
