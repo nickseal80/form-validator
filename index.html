@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="test-styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>validation test</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                <h1>Default form</h1>
+
+                <form action="http://localhost:8080" method="post" id="form">
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" name="name" id="name" class="form-control" />
+                        <div class="mb-3 has-errors" id="name-validation-errors"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea id="description" name="description" class="form-control"></textarea>
+                        <div class="mb-3 has-errors" id="description-validation-errors"></div>
+                    </div>
+
+                    <input type="submit" value="submit" class="btn btn-success" />
+
+                </form>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h1>Secondary form</h1>
+
+                <form action="http://localhost:8080" method="post" id="secondary-form">
+
+                    <div class="mb-3">
+                        <label for="numeric" class="form-label">Numeric</label>
+                        <input type="text" name="numeric" class="form-control" id="numeric" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="integer" class="form-label">Integer</label>
+                        <input type="text" name="integer" class="form-control" id="integer" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="float" class="form-label">Float</label>
+                        <input type="text" name="float" class="form-control" id="float" />
+                    </div>
+
+                    <input type="submit" value="submit" class="btn btn-success" />
+
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h1>Password form</h1>
+
+                <form action="http://localhost:8080" method="post" id="password-form">
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="text" name="password" class="form-control" id="password" />
+                    </div>
+
+                    <input type="submit" value="submit" class="btn btn-success" />
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="dist/validate.js" defer></script>
+</body>
+</html>

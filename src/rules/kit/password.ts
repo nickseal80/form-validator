@@ -1,11 +1,11 @@
-import { ValidateRule } from "../ValidateRule";
+import { ValidateRule, getRule } from "../ValidateRule";
 
-export type PasswordConditions = {
-    minLength: number,
-    uppercase: boolean,
-    lowercase: boolean,
-    number: boolean,
-    symbols: boolean,
+export interface PasswordConditions
+{
+    hasUppercase?: boolean,
+    hasLowercase?: boolean,
+    hasNumber?: boolean,
+    hasSymbols?: boolean,
 }
 
 /**
@@ -18,8 +18,24 @@ export type PasswordConditions = {
  */
 export const password: ValidateRule = {
     rule: 'password',
-    validator: (value, conditions: PasswordConditions) => {
+    validator: (value: string, minLength: number, conditions?: PasswordConditions): boolean => {
+        const minLengthRule = getRule('minLength');
+        const status: boolean = minLengthRule.validator(value, minLength);
+        // if (!status) {
+        //     return false;
+        // }
+
+        if (conditions) {
+            Object.keys(conditions).forEach(condition => {
+                if ((conditions as any)[condition]) {
+                    //
+                }
+            })
+        }
+
         return true;
     },
-    defaultMessage: () => `вот тут самое интересное`,
+    defaultMessage: (value: string): string => {
+        return `Password must be at least ${value} characters long`;
+    }
 }

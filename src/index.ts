@@ -28,3 +28,4 @@ export default validator;
 
 // import "./testForms/first-form";
 import "./testForms/secondary-form";
+import "./testForms/password-form";

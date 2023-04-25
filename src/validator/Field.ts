@@ -5,7 +5,6 @@ import EventDispatcher from "../event-dispatcher/EventDispatcher";
 import validator from "../index";
 import { Config } from "../validatorConfig/config";
 import { FieldValidationError } from "./Form";
-import fieldError from "../errors/FieldError";
 
 class Field {
     private _$element: HTMLInputElement;
@@ -70,7 +69,7 @@ class Field {
             if (typeof validateRule === "undefined" && rule.validator && typeof rule.validator === "function") {
                 validateRule = rule;
             }
-            if (!validateRule.validator(this._$element.value, rule.value)) {
+            if (!validateRule.validator(this._$element.value, rule.value, rule.conditions)) {
                 const error = {
                     rule: validateRule.rule,
                     message: rule.message ? rule.message : validateRule.defaultMessage(rule.value),
