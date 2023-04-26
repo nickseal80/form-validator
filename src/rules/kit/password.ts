@@ -21,17 +21,19 @@ export const password: ValidateRule = {
     validator: (value: string, minLength: number, conditions?: PasswordConditions): boolean => {
         const minLengthRule = getRule('minLength');
         const status: boolean = minLengthRule.validator(value, minLength);
-        // if (!status) {
-        //     return false;
-        // }
 
         if (conditions) {
             Object.keys(conditions).forEach(condition => {
                 if ((conditions as any)[condition]) {
-                    //
+                    const conditionRule = getRule(condition);
+                    console.log(conditionRule);
                 }
             })
         }
+
+        // if (!status) {
+        //     return false;
+        // }
 
         return true;
     },

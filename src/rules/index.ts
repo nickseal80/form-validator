@@ -4,4 +4,8 @@ export { minLength } from './kit/minLength';
 export { numeric } from './kit/numeric';
 export { integer } from './kit/integer';
 export { float } from './kit/float';
+export { hasUppercase } from './kit/hasUppercase';
+export { hasLowercase } from './kit/hasLowercase';
+export { hasNumber } from './kit/hasNumber';
+export { hasSymbol } from './kit/hasSymbol';
 export { password } from './kit/password';

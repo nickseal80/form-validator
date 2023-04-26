@@ -10,9 +10,9 @@ passwordFormValidator
             value: 7,
             conditions: {
                 hasUppercase: true,
-                hasLowercase: false,
-                hasNumber: false,
-                hasSymbol: false,
+                hasLowercase: true,
+                hasNumber: true,
+                hasSymbol: true,
             }
         }
     ])

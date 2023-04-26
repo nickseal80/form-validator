@@ -86,7 +86,7 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
   \****************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.password = exports.float = exports.integer = exports.numeric = exports.minLength = exports.maxLength = exports.required = void 0;\nvar required_1 = __webpack_require__(/*! ./kit/required */ \"./src/rules/kit/required.ts\");\nObject.defineProperty(exports, \"required\", ({ enumerable: true, get: function () { return required_1.required; } }));\nvar maxLength_1 = __webpack_require__(/*! ./kit/maxLength */ \"./src/rules/kit/maxLength.ts\");\nObject.defineProperty(exports, \"maxLength\", ({ enumerable: true, get: function () { return maxLength_1.maxLength; } }));\nvar minLength_1 = __webpack_require__(/*! ./kit/minLength */ \"./src/rules/kit/minLength.ts\");\nObject.defineProperty(exports, \"minLength\", ({ enumerable: true, get: function () { return minLength_1.minLength; } }));\nvar numeric_1 = __webpack_require__(/*! ./kit/numeric */ \"./src/rules/kit/numeric.ts\");\nObject.defineProperty(exports, \"numeric\", ({ enumerable: true, get: function () { return numeric_1.numeric; } }));\nvar integer_1 = __webpack_require__(/*! ./kit/integer */ \"./src/rules/kit/integer.ts\");\nObject.defineProperty(exports, \"integer\", ({ enumerable: true, get: function () { return integer_1.integer; } }));\nvar float_1 = __webpack_require__(/*! ./kit/float */ \"./src/rules/kit/float.ts\");\nObject.defineProperty(exports, \"float\", ({ enumerable: true, get: function () { return float_1.float; } }));\nvar password_1 = __webpack_require__(/*! ./kit/password */ \"./src/rules/kit/password.ts\");\nObject.defineProperty(exports, \"password\", ({ enumerable: true, get: function () { return password_1.password; } }));\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.password = exports.hasSymbol = exports.hasNumber = exports.hasLowercase = exports.hasUppercase = exports.float = exports.integer = exports.numeric = exports.minLength = exports.maxLength = exports.required = void 0;\nvar required_1 = __webpack_require__(/*! ./kit/required */ \"./src/rules/kit/required.ts\");\nObject.defineProperty(exports, \"required\", ({ enumerable: true, get: function () { return required_1.required; } }));\nvar maxLength_1 = __webpack_require__(/*! ./kit/maxLength */ \"./src/rules/kit/maxLength.ts\");\nObject.defineProperty(exports, \"maxLength\", ({ enumerable: true, get: function () { return maxLength_1.maxLength; } }));\nvar minLength_1 = __webpack_require__(/*! ./kit/minLength */ \"./src/rules/kit/minLength.ts\");\nObject.defineProperty(exports, \"minLength\", ({ enumerable: true, get: function () { return minLength_1.minLength; } }));\nvar numeric_1 = __webpack_require__(/*! ./kit/numeric */ \"./src/rules/kit/numeric.ts\");\nObject.defineProperty(exports, \"numeric\", ({ enumerable: true, get: function () { return numeric_1.numeric; } }));\nvar integer_1 = __webpack_require__(/*! ./kit/integer */ \"./src/rules/kit/integer.ts\");\nObject.defineProperty(exports, \"integer\", ({ enumerable: true, get: function () { return integer_1.integer; } }));\nvar float_1 = __webpack_require__(/*! ./kit/float */ \"./src/rules/kit/float.ts\");\nObject.defineProperty(exports, \"float\", ({ enumerable: true, get: function () { return float_1.float; } }));\nvar hasUppercase_1 = __webpack_require__(/*! ./kit/hasUppercase */ \"./src/rules/kit/hasUppercase.ts\");\nObject.defineProperty(exports, \"hasUppercase\", ({ enumerable: true, get: function () { return hasUppercase_1.hasUppercase; } }));\nvar hasLowercase_1 = __webpack_require__(/*! ./kit/hasLowercase */ \"./src/rules/kit/hasLowercase.ts\");\nObject.defineProperty(exports, \"hasLowercase\", ({ enumerable: true, get: function () { return hasLowercase_1.hasLowercase; } }));\nvar hasNumber_1 = __webpack_require__(/*! ./kit/hasNumber */ \"./src/rules/kit/hasNumber.ts\");\nObject.defineProperty(exports, \"hasNumber\", ({ enumerable: true, get: function () { return hasNumber_1.hasNumber; } }));\nvar hasSymbol_1 = __webpack_require__(/*! ./kit/hasSymbol */ \"./src/rules/kit/hasSymbol.ts\");\nObject.defineProperty(exports, \"hasSymbol\", ({ enumerable: true, get: function () { return hasSymbol_1.hasSymbol; } }));\nvar password_1 = __webpack_require__(/*! ./kit/password */ \"./src/rules/kit/password.ts\");\nObject.defineProperty(exports, \"password\", ({ enumerable: true, get: function () { return password_1.password; } }));\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/index.ts?");
 
 /***/ }),
 
@@ -97,6 +97,46 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 /***/ ((__unused_webpack_module, exports) => {
 
 eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.float = void 0;\nexports.float = {\n    rule: 'float',\n    validator: (value) => {\n        return /^(-?|[0-9]*[.,][0-9]+)$/.test(value);\n    },\n    defaultMessage: () => `Field is float`,\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/kit/float.ts?");
+
+/***/ }),
+
+/***/ "./src/rules/kit/hasLowercase.ts":
+/*!***************************************!*\
+  !*** ./src/rules/kit/hasLowercase.ts ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.hasLowercase = void 0;\nexports.hasLowercase = {\n    rule: 'hasLowercase',\n    validator: (value) => {\n        return /[a-zа-я]/.test(value);\n    },\n    defaultMessage: () => 'The field must contain uppercase characters'\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/kit/hasLowercase.ts?");
+
+/***/ }),
+
+/***/ "./src/rules/kit/hasNumber.ts":
+/*!************************************!*\
+  !*** ./src/rules/kit/hasNumber.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.hasNumber = void 0;\nexports.hasNumber = {\n    rule: 'hasNumber',\n    validator: (value) => {\n        return /[0-9]/.test(value);\n    },\n    defaultMessage: () => 'The field must contain numeric characters'\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/kit/hasNumber.ts?");
+
+/***/ }),
+
+/***/ "./src/rules/kit/hasSymbol.ts":
+/*!************************************!*\
+  !*** ./src/rules/kit/hasSymbol.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.hasSymbol = void 0;\nexports.hasSymbol = {\n    rule: 'hasSymbol',\n    validator: (value) => {\n        return /[!\"#$%&'()*+,-./:;<=>?@[\\\\\\]^_`{|}~]/.test(value);\n    },\n    defaultMessage: () => 'The field must contain special characters'\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/kit/hasSymbol.ts?");
+
+/***/ }),
+
+/***/ "./src/rules/kit/hasUppercase.ts":
+/*!***************************************!*\
+  !*** ./src/rules/kit/hasUppercase.ts ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.hasUppercase = void 0;\nexports.hasUppercase = {\n    rule: 'hasUppercase',\n    validator: (value) => {\n        return /[A-ZА-Я]/.test(value);\n    },\n    defaultMessage: () => 'The field must contain uppercase characters'\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/kit/hasUppercase.ts?");
 
 /***/ }),
 
@@ -146,7 +186,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
   \***********************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.password = void 0;\nconst ValidateRule_1 = __webpack_require__(/*! ../ValidateRule */ \"./src/rules/ValidateRule.ts\");\n/**\n * Плагин должен принимать ряд параметров, по которым необходимо валидировать пароль:\n * - minLength (number) - минимальная длина пароля\n * - uppercase (boolean) - пароль должен содержать прописные символы\n * - lowercase (boolean) - пароль должен содержать строчные символы\n * - number (boolean) - пароль должен содержать цифры\n * - symbols (boolean) - пароль должен содержать символы\n */\nexports.password = {\n    rule: 'password',\n    validator: (value, minLength, conditions) => {\n        const minLengthRule = (0, ValidateRule_1.getRule)('minLength');\n        const status = minLengthRule.validator(value, minLength);\n        // if (!status) {\n        //     return false;\n        // }\n        if (conditions) {\n            Object.keys(conditions).forEach(condition => {\n                if (conditions[condition]) {\n                    //\n                }\n            });\n        }\n        return true;\n    },\n    defaultMessage: (value) => {\n        return `Password must be at least ${value} characters long`;\n    }\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/kit/password.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.password = void 0;\nconst ValidateRule_1 = __webpack_require__(/*! ../ValidateRule */ \"./src/rules/ValidateRule.ts\");\n/**\n * Плагин должен принимать ряд параметров, по которым необходимо валидировать пароль:\n * - minLength (number) - минимальная длина пароля\n * - uppercase (boolean) - пароль должен содержать прописные символы\n * - lowercase (boolean) - пароль должен содержать строчные символы\n * - number (boolean) - пароль должен содержать цифры\n * - symbols (boolean) - пароль должен содержать символы\n */\nexports.password = {\n    rule: 'password',\n    validator: (value, minLength, conditions) => {\n        const minLengthRule = (0, ValidateRule_1.getRule)('minLength');\n        const status = minLengthRule.validator(value, minLength);\n        // if (!status) {\n        //     return false;\n        // }\n        if (conditions) {\n            Object.keys(conditions).forEach(condition => {\n                if (conditions[condition]) {\n                    const conditionRule = (0, ValidateRule_1.getRule)(condition);\n                    console.log(conditionRule);\n                }\n            });\n        }\n        return true;\n    },\n    defaultMessage: (value) => {\n        return `Password must be at least ${value} characters long`;\n    }\n};\n\n\n//# sourceURL=webpack://seal-validator/./src/rules/kit/password.ts?");
 
 /***/ }),
 
@@ -166,7 +206,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
   \****************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst index_1 = __importDefault(__webpack_require__(/*! ../index */ \"./src/index.ts\"));\nconst passwordFormValidator = index_1.default\n    .addForm('#password-form', { validateByFormChange: true });\npasswordFormValidator\n    .addField('#password', [\n    {\n        rule: 'password',\n        value: 7,\n        conditions: {\n            hasUppercase: true,\n            hasLowercase: false,\n            hasNumber: false,\n            hasSymbol: false,\n        }\n    }\n])\n    .on('formHasErrors', (evt) => {\n    console.log(evt.data.errors);\n});\n// .on('formInputChange', (evt) => {\n//     console.log(evt.data);\n// });\n\n\n//# sourceURL=webpack://seal-validator/./src/testForms/password-form.ts?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst index_1 = __importDefault(__webpack_require__(/*! ../index */ \"./src/index.ts\"));\nconst passwordFormValidator = index_1.default\n    .addForm('#password-form', { validateByFormChange: true });\npasswordFormValidator\n    .addField('#password', [\n    {\n        rule: 'password',\n        value: 7,\n        conditions: {\n            hasUppercase: true,\n            hasLowercase: true,\n            hasNumber: true,\n            hasSymbol: true,\n        }\n    }\n])\n    .on('formHasErrors', (evt) => {\n    console.log(evt.data.errors);\n});\n// .on('formInputChange', (evt) => {\n//     console.log(evt.data);\n// });\n\n\n//# sourceURL=webpack://seal-validator/./src/testForms/password-form.ts?");
 
 /***/ }),
 
