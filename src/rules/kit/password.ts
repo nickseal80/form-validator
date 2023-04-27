@@ -1,4 +1,5 @@
 import { ValidateRule, getRule } from "../ValidateRule";
+import error from "../../errors/Error";
 
 export interface PasswordConditions
 {
@@ -6,6 +7,19 @@ export interface PasswordConditions
     hasLowercase?: boolean,
     hasNumber?: boolean,
     hasSymbols?: boolean,
+}
+
+type PasswordErrors = {
+    condition: string,
+    validation: boolean,
+}
+
+let errors: PasswordErrors[] = [];
+
+const notHasErrors = (errors: PasswordErrors[]): boolean => {
+    return !errors.some(ve => {
+        return !ve.validation;
+    })
 }
 
 /**
@@ -23,21 +37,21 @@ export const password: ValidateRule = {
         const status: boolean = minLengthRule.validator(value, minLength);
 
         if (conditions) {
-            Object.keys(conditions).forEach(condition => {
-                if ((conditions as any)[condition]) {
-                    const conditionRule = getRule(condition);
-                    console.log(conditionRule);
-                }
-            })
+            errors = Object.keys(conditions).filter(condition => {
+                return ((conditions as any)[condition]);
+            }).map(condition => {
+                const conditionRule: ValidateRule = getRule(condition);
+                const validation = conditionRule.validator(value);
+                return { condition, validation }
+            });
         }
 
-        // if (!status) {
-        //     return false;
-        // }
+        errors.push({ condition: 'minLength', validation: status });
 
-        return true;
+        return notHasErrors(errors);
     },
     defaultMessage: (value: string): string => {
+        // TODO: Доработать генерацию сообщений
         return `Password must be at least ${value} characters long`;
     }
 }
